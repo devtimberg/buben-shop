@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 
 class Categories(models.Model):
     name = models.CharField(max_length=100, verbose_name=_('Category'))
+    slug = models.SlugField(verbose_name=_('URL'))
 
     class Meta:
         verbose_name = _('Category')
@@ -20,6 +21,7 @@ class Categories(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Categories, verbose_name=_('Category product'))
     name = models.CharField(max_length=200, verbose_name=_('Name product'))
+    slug = models.SlugField(verbose_name=_('URL'))
     image = ThumbnailerImageField(upload_to='product', blank=True, verbose_name=_('Image product'))
     price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name=_('Price product'))
     description = models.TextField(verbose_name=_('Description product'))

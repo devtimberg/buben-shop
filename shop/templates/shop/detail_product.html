@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load staticfiles thumbnail %}
+
+{% block title %}Каталог товаров &#8212;{% endblock %}
+
+{% block content %}
+{% include 'shop/menu/menu_category.html' %}
+    <h1>{{ product.name }}</h1>
+
+    <div class="item__photo">
+        <img src="{% thumbnail product.image 300x300 crop %}" alt=""/>
+        {% for img in product.get_image %}
+            <img src="{% thumbnail img.image 300x300 crop %}" alt=""/>
+        {% endfor %}
+    </div>
+
+    <div class="item__price">{{ product.price }}</div>
+    <a class="btn">Добавить в корзину</a>
+    <div class="item__description">{{ product.description }}</div>
+
+
+{% endblock content %}

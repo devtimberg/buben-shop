@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <h1>Tortor Bibendum Inceptos</h1>
+    <h2>Nullam quis risus eget urna mollis ornare vel eu leo.
+        Aenean lacinia bibendum nulla sed consectetur.
+        Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
+        eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis.</h2>
+        <a href="{% url 'shop:list_product' %}" class="btn">Ай-да в магазин</a>
+{% endblock content %}
+

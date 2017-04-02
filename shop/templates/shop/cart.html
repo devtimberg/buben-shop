@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load staticfiles thumbnail %}
+
+{% block title %}Корзина товаров &#8212;{% endblock %}
+
+{% block content %}
+
+    {% verbatim %}
+
+    <h1>Корзина товаров</h1>
+
+    <div class="cart">
+        <ul ng-repeat="p in listCart">
+
+            <li ng-repeat="i in p.products">
+               {{ i.product.name }} | {{ i.product.price }} |
+                <input type="text" size="3" maxlength="3" value="{{ i.quantity }}">
+                <button ng-click="delProductCart()">Удалить</button>
+            </li>
+
+        </ul>
+    </div>
+
+    {% endverbatim %}
+
+{% endblock %}

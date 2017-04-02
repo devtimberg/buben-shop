@@ -1,9 +1,13 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="CartApp"  ng-controller="CartCtrl">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %} Магазинище</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="{% static 'js/cart.controller.js' %}"></script>
+
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
 </head>
@@ -15,14 +19,18 @@
                 <img src="{% static 'img/logo.png' %}" alt="">
             </a>
         </div>
-        <div class="cart"><a href="">12 450 <span>руб.</span></a></div>
+        {% verbatim %}
+        <div class="cart">
+            <a href="/cart/">{{ sum }} <span>руб.</span></a>
+        </div>
+        {% endverbatim %}
     </div>
 </header>
 
 <div class="container">
-{% block content %}
+    {% block content %}
 
-{% endblock content %}
+    {% endblock content %}
 
 </div>
 <div class="push"></div>

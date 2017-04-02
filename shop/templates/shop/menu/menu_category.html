@@ -1,6 +1,6 @@
 <div class="container">
-    <a href="{% url 'shop:list_product' %}">Все</a>
+    <a class="category" href="{% url 'shop:list_product' %}">Все</a>
     {% for c in categories %}
-        <a href="{% url 'shop:list_category' c.slug %}" class="categories">{{ c.name }}</a>
+        <a class="category" href="{% url 'shop:list_category' c.slug %}" class="categories">{{ c.name }}</a>
     {% endfor %}
 </div>

@@ -49,22 +49,30 @@ class PhotoProduct(models.Model):
         return str(self.product)
 
 
-class Order(models.Model):
-    user = models.ForeignKey(User, default=True, verbose_name=_('User'))
-    email = models.EmailField(max_length=11, null=True, verbose_name=_('Email'))
+class Cart(models.Model):
+    session = models.CharField(max_length=255)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.session)
 
 
-class OrderProduct(models.Model):
-    order = models.ForeignKey(Order, related_name='order', verbose_name=_('Order'))
-    product = models.ForeignKey(Product, related_name='order_product', verbose_name=_('Product'))
+class ProductInCart(models.Model):
+    product = models.ForeignKey(Product, null=True, blank=True)
+    quantity = models.PositiveIntegerField(default=1, verbose_name=_('Quantity'))
+    cart = models.ForeignKey(Cart, null=True, blank=True)
+
+
+class Order(models.Model):
+    session = models.CharField(max_length=255)
+    email = models.EmailField(max_length=11, null=True, verbose_name=_('Email'))
+    product = models.ManyToManyField(Product, related_name='order_product', verbose_name=_('Product'))
     price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name=_('Price'))
     quantity = models.PositiveIntegerField(default=1, verbose_name=_('Quantity'))
-    created = models.DateTimeField(auto_now_add=True, verbose_name=_('Created'))
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Created'))
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['-date_created']
         verbose_name = _('Order')
         verbose_name_plural = _('Orders')
+
+

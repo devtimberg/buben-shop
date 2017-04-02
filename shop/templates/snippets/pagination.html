@@ -1,9 +1,16 @@
+{% load url_tag %}
+
+{#<a href="?{% url_replace request 'page' paginator.next_page_number %}">#}
+
+{#<a href="?{% url_replace page=paginator.next_page_number %}">#}
+
+
 {% if is_paginated %}
   <nav>
     <ul class="pagination">
       {% if page_obj.has_previous %}
         <li>
-          <a href="?page={{ page_obj.previous_page_number }}">
+          <a href="?{% url_replace page=page_obj.previous_page_number %}">
             <span>Назад</span>
           </a>
         </li>
@@ -17,13 +24,13 @@
 
       {% for page in paginator.page_range %}
         <li {% if page == page_obj.number %}class="active"{% endif %}>
-          <a href="?page={{ page }}">{{ page }}</a>
+          <a href="?{% url_replace page=page %}">{{ page }}</a>
         </li>
       {% endfor %}
 
       {% if page_obj.has_next %}
         <li>
-          <a href="?page={{ page_obj.next_page_number }}">
+          <a href="?{% url_replace page=page_obj.next_page_number %}">
             <span>Вперед</span>
           </a>
         </li>

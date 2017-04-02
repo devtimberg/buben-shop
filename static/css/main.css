@@ -44,6 +44,7 @@ footer {
     margin: 0 auto;
     flex: 1;
     justify-content: center;
+    padding: 15px 0;
 }
 
 .logo {
@@ -80,20 +81,9 @@ footer {
     flex-direction: row;
 }
 
-ul#id_category {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul#id_category li {
+a.category{
     display: inline-block;
-    padding: 10px 15px;
-    color: #320c54;
-}
-
-ul#id_category li a.selected{
-    padding: 10px 15px;
-    background-color: #320c54;
-    color: white;
+    padding: 10px 20px;
+    background-color: #d6bbef;
 }
 

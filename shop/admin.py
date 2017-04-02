@@ -14,4 +14,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(shop_models.Categories)
+admin.site.register(shop_models.Order)
+admin.site.register(shop_models.ProductInCart)
 admin.site.register(shop_models.Product, ProductAdmin)

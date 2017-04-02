@@ -5,7 +5,7 @@
 {% block title %}Каталог товаров &#8212;{% endblock %}
 
 {% block content %}
-{% include 'shop/menu/menu_category.html' %}
+
     <h1>{{ product.name }}</h1>
 
     <div class="item__photo">
@@ -15,9 +15,59 @@
         {% endfor %}
     </div>
 
+    <div class="" style="display:none;" id="product_id">{{ product.id }}</div>
     <div class="item__price">{{ product.price }}</div>
-    <a class="btn">Добавить в корзину</a>
+
+    <input type="number" id="quantity_id" value="1">
+    <a class="btn" id="add_to_cart">Добавить в корзину</a>
+
     <div class="item__description">{{ product.description }}</div>
 
-
+{#<script#}
+{#  src="https://code.jquery.com/jquery-3.2.1.js"#}
+{#  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="#}
+{#  crossorigin="anonymous"></script>#}
+{##}
+{#    <script>#}
+{#        function getCookie(name) {#}
+{#        var cookieValue = null;#}
+{#        if (document.cookie && document.cookie !== '') {#}
+{#            var cookies = document.cookie.split(';');#}
+{#            for (var i = 0; i < cookies.length; i++) {#}
+{#                var cookie = jQuery.trim(cookies[i]);#}
+{#                // Does this cookie string begin with the name we want?#}
+{#                if (cookie.substring(0, name.length + 1) === (name + '=')) {#}
+{#                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));#}
+{#                    break;#}
+{#                }#}
+{#            }#}
+{#        }#}
+{#        return cookieValue;#}
+{#    }#}
+{#    var csrftoken = getCookie('csrftoken');#}
+{##}
+{#    function csrfSafeMethod(method) {#}
+{#        // these HTTP methods do not require CSRF protection#}
+{#        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));#}
+{#    }#}
+{#    $.ajaxSetup({#}
+{#        beforeSend: function (xhr, settings) {#}
+{#            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {#}
+{#                xhr.setRequestHeader("X-CSRFToken", csrftoken);#}
+{#            }#}
+{#        }#}
+{#    });#}
+{##}
+{#    $(document).ready(function(){#}
+{#        $("#add_to_cart").click(function() {#}
+{#            var params = {#}
+{#                product_id: $("#product_id").html(),#}
+{#                quantity: $("#quantity_id").val()#}
+{#            };#}
+{#            $.post("/api/cart/", params).then(function() {#}
+{#                alert("Товар добавлен в козину");#}
+{#            })#}
+{#        })#}
+{#    })#}
+{#    </script>#}
 {% endblock content %}
